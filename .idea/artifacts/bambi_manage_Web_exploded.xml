@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="bambi-manage:Web exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/bambi_manage_Web_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="bambi-manage/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="bambi-manage" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/BambiShop.iml" filepath="$PROJECT_DIR$/.idea/BambiShop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BambiShop0.3/BambiShop0.3.iml" filepath="$PROJECT_DIR$/BambiShop0.3/BambiShop0.3.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BambiShop0.3/bambi-common/bambi-common.iml" filepath="$PROJECT_DIR$/BambiShop0.3/bambi-common/bambi-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BambiShop0.3/bambi-manage/bambi-manage.iml" filepath="$PROJECT_DIR$/BambiShop0.3/bambi-manage/bambi-manage.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BambiShop0.3/try/try.iml" filepath="$PROJECT_DIR$/BambiShop0.3/try/try.iml" />
     </modules>
   </component>
 </project>
