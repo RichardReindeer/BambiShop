@@ -32,4 +32,9 @@ public class DemoController {
     public String demo(){
         return username;
     }
+
+    @GetMapping("/bambi")
+    public String bambi(){
+        return "user";
+    }
 }

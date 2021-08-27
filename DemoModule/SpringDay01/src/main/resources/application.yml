@@ -1,3 +1,13 @@
+
+
 #测试使用yml 来对属性动态赋值
 bambi:
   username: bambi
+
+reindeer:
+  username: reindeer
+  password: 123456
+  url: http://www.bambi.com/
+  data-time: 2020100
+server:
+  port: 9099
