@@ -1,0 +1,3 @@
+#测试使用yml 来对属性动态赋值
+bambi:
+  username: bambi
