@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SpringDay02-JSP:war">
+    <output-path>$PROJECT_DIR$/DemoModule/SpringDay02-JSP/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>false</exploded>
+        <module>SpringDay02-JSP</module>
+        <packaging>war</packaging>
+        <unpackNestedArchives>false</unpackNestedArchives>
+      </options>
+    </properties>
+    <root id="archive" name="SpringDay02-JSP-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="SpringDay02-JSP:war exploded" />
+    </root>
+  </artifact>
+</component>

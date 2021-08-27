@@ -7,6 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/DemoModule/DemoModule.iml" filepath="$PROJECT_DIR$/DemoModule/DemoModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/DemoModule/SpringDay01/SpringDay01.iml" filepath="$PROJECT_DIR$/DemoModule/SpringDay01/SpringDay01.iml" />
       <module fileurl="file://$PROJECT_DIR$/DemoModule/SpringDay02/SpringDay02.iml" filepath="$PROJECT_DIR$/DemoModule/SpringDay02/SpringDay02.iml" />
+      <module fileurl="file://$PROJECT_DIR$/DemoModule/SpringDay02-JSP/SpringDay02-JSP.iml" filepath="$PROJECT_DIR$/DemoModule/SpringDay02-JSP/SpringDay02-JSP.iml" />
       <module fileurl="file://$PROJECT_DIR$/BambiShop0.3/bambi-common/bambi-common.iml" filepath="$PROJECT_DIR$/BambiShop0.3/bambi-common/bambi-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/BambiShop0.3/bambi-manage/bambi-manage.iml" filepath="$PROJECT_DIR$/BambiShop0.3/bambi-manage/bambi-manage.iml" />
       <module fileurl="file://$PROJECT_DIR$/BambiShop0.3/try/try.iml" filepath="$PROJECT_DIR$/BambiShop0.3/try/try.iml" />

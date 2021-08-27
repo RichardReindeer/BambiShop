@@ -10,6 +10,7 @@
         <module name="bambi-common" />
         <module name="SpringDay02" />
         <module name="SpringDay01" />
+        <module name="SpringDay02-JSP" />
         <module name="bambi-manage" />
         <module name="try" />
       </profile>
@@ -21,6 +22,7 @@
       <module name="BambiShop0.3" target="11" />
       <module name="SpringDay01" target="11" />
       <module name="SpringDay02" target="11" />
+      <module name="SpringDay02-JSP" target="11" />
       <module name="try" target="11" />
       <module name="untitled" target="1.5" />
     </bytecodeTargetLevel>
@@ -30,6 +32,7 @@
       <module name="BambiShop0.3" options="-parameters" />
       <module name="SpringDay01" options="-parameters" />
       <module name="SpringDay02" options="-parameters" />
+      <module name="SpringDay02-JSP" options="-parameters" />
       <module name="bambi-common" options="-parameters" />
       <module name="bambi-manage" options="-parameters" />
       <module name="try" options="-parameters" />
