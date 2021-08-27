@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="bambi-common" />
+        <module name="SpringDay02" />
         <module name="SpringDay01" />
         <module name="bambi-manage" />
         <module name="try" />
@@ -19,6 +20,7 @@
       <module name="BambiShop0.2" target="11" />
       <module name="BambiShop0.3" target="11" />
       <module name="SpringDay01" target="11" />
+      <module name="SpringDay02" target="11" />
       <module name="try" target="11" />
       <module name="untitled" target="1.5" />
     </bytecodeTargetLevel>
@@ -27,6 +29,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="BambiShop0.3" options="-parameters" />
       <module name="SpringDay01" options="-parameters" />
+      <module name="SpringDay02" options="-parameters" />
       <module name="bambi-common" options="-parameters" />
       <module name="bambi-manage" options="-parameters" />
       <module name="try" options="-parameters" />
