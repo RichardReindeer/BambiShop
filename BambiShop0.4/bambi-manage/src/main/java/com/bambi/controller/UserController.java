@@ -2,6 +2,7 @@ package com.bambi.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 描述： 用户操作控制器层
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @since 1.0
  */
 @RequestMapping("/user")
-@Controller
+@RestController
 public class UserController {
 
 }

@@ -3,6 +3,7 @@ package com.bambi;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 描述：
@@ -18,6 +19,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @author Bambi
  * @since 1.0
  */
+@EnableSwagger2
 @SpringBootApplication
 @MapperScan("com.bambi.mapper")
 public class ManagerRunner {

@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 描述：
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author Bambi
  * @since 1.0
  */
-@Controller
+@RestController
 public class IndexController {
     @RequestMapping("/page/{moduleName}")
     //@ResponseBody  测试能不能接收到数据

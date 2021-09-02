@@ -4,7 +4,6 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 
 /**
@@ -28,9 +27,9 @@ public class ItemDao extends BaseDao {
 
     //商品id
     @TableId(type = IdType.AUTO)
-    private long id;
+    private Long id;
     //商品标题
-    private String tittle;
+    private String title;
     //商品卖点信息
     private String sellPoint;
     //商品价格 long > dubbo
@@ -63,12 +62,12 @@ public class ItemDao extends BaseDao {
         this.id = id;
     }
 
-    public String getTittle() {
-        return tittle;
+    public String getTitle() {
+        return title;
     }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getSellPoint() {

@@ -2,6 +2,8 @@ package com.bambi.domain.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.env.Environment;
+import org.springframework.core.env.Profiles;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.service.ApiInfo;
 import springfox.documentation.service.Contact;
@@ -29,13 +31,17 @@ import java.util.ArrayList;
 @EnableSwagger2
 public class SwaggerConfig {
     @Bean
-    public Docket getDocker(){
-        return new Docket(DocumentationType.SWAGGER_2).apiInfo(getApiInfo())
+    public Docket getDocker(Environment environment){
+        //仅在dev下开启swagger
+        Profiles profiles = Profiles.of("dev");
+        boolean flag = environment.acceptsProfiles(profiles);
+        return new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(getApiInfo())
                 .groupName("bambiTeam")
                 //判断是否启动Swagger,可以进行一个动态判断，判断当前是否是开发模式
-                .enable(true)
+                .enable(flag)
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.bambi"))
+                .apis(RequestHandlerSelectors.any()) //全部扫描
                 .build();
     }
 
@@ -45,8 +51,8 @@ public class SwaggerConfig {
         return new ApiInfo("BambiShop",
                 "bambi商城项目",
                 "snapShot 0.4",
-                "没什么url，看我的github吧，博客在写了在写了",
-                new Contact("Mr.bambi","没有url","没有email"),
+                "https://github.com/RichardReindeer",
+                new Contact("Mr.bambi","https://github.com/RichardReindeer","check my github"),
                 "不知道写些什么",
                 "不知道写些什么",
                 new ArrayList<>()
