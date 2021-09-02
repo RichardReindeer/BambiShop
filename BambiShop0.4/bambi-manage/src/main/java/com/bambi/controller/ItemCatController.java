@@ -58,11 +58,15 @@ public class ItemCatController {
         return stringList;
     }
 
+    /**
+     * 如果不传入id值则默认为0 即默认为一级目录
+     * @param parentId
+     * @return
+     */
     @ApiOperation("提供easyUI进行列表展示所需的分类")
     @GetMapping("/list")
     public List<EasyUITree> findItemCatByParentId(@RequestParam(defaultValue = "0",name = "id") Long parentId){
         logger.info("findCatByParentId starting");
-
-        return null;
+        return itemCatService.findItemCatByParentId(parentId);
     }
 }

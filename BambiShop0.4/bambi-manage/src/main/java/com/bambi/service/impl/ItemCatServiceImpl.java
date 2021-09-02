@@ -71,6 +71,11 @@ public class ItemCatServiceImpl implements IItemCatService {
         return cover(parentId);
     }
 
+    /**
+     * 参数和dao对象间进行转换
+     * @param parentId
+     * @return
+     */
     private List<EasyUITree> cover(Long parentId){
         logger.info("start to cover easyUItree and ItemCat");
         List<EasyUITree> easyUITrees = new LinkedList<>();
@@ -84,6 +89,11 @@ public class ItemCatServiceImpl implements IItemCatService {
         return easyUITrees;
     }
 
+    /**
+     * 使用MP 根据parentID查询对象
+     * @param parentId
+     * @return
+     */
     private List<ItemCatDao> selectByParentId(Long parentId){
         QueryWrapper<ItemCatDao> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("parent_id",parentId);
