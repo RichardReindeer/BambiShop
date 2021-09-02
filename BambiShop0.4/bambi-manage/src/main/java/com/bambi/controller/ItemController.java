@@ -1,5 +1,7 @@
 package com.bambi.controller;
 
+import com.bambi.domain.SystemResult;
+import com.bambi.domain.dao.ItemDao;
 import com.bambi.domain.exception.NoParamFromWebException;
 import com.bambi.domain.param.EasyUITable;
 import com.bambi.service.impl.ItemServiceImpl;
@@ -50,4 +52,24 @@ public class ItemController {
             return null;
         }
     }
+
+    @ApiOperation("商品新增")
+    @GetMapping("/save")
+    public SystemResult saveItem(ItemDao itemDao){
+        if(itemDao==null){
+            logger.error("新增物品为空");
+            return SystemResult.fail();
+        }
+        logger.info("save Item is starting !!!");
+        try{
+            itemService.saveItem(itemDao);
+            return SystemResult.success();
+        }
+        catch (Exception e){
+            logger.error("have some error in save Item = =");
+            return SystemResult.fail();
+        }
+
+    }
+
 }

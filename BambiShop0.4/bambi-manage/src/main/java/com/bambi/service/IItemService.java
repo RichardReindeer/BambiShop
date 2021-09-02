@@ -1,5 +1,7 @@
 package com.bambi.service;
 
+import com.bambi.domain.dao.ItemDao;
+import com.bambi.domain.param.EasyUITable;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,4 +21,7 @@ import org.springframework.stereotype.Service;
 @Service
 public interface IItemService {
 
+    EasyUITable findUserByPage(Integer page, Integer rows);
+
+    void saveItem(ItemDao itemDao);
 }
