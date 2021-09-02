@@ -28,6 +28,4 @@ public interface ItemMapper extends BaseMapper<ItemDao> {
 
     @Select("SELECT * FROM tb_item ORDER BY updated desc limit #{start},#{rows}")
     List<ItemDao> findItemByPage(int start , int rows);
-
-    IPage<ItemDao> selectPageVo(Page<ItemDao> page);
 }

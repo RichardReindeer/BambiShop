@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * 描述：
+ * 描述：MybatisPlus配置类
  *
  * <pre>
  * HISTORY
@@ -30,7 +30,8 @@ public class MybatisPlusConfig {
         return new PaginationInnerInterceptor();
     }
 
-    /*@Bean
+
+    /*@Bean  使用新版写法存在问题
     public MybatisPlusInterceptor mybatisPlusInterceptor(){
         MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
         PaginationInnerInterceptor paginationInnerInterceptor = new PaginationInnerInterceptor(DbType.DB2);
