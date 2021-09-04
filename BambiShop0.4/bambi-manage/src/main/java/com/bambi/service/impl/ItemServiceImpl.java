@@ -1,10 +1,13 @@
 package com.bambi.service.impl;
 
 import com.bambi.domain.dao.ItemDao;
+import com.bambi.domain.dao.ItemDesc;
 import com.bambi.domain.param.EasyUITable;
+import com.bambi.mapper.ItemDescMapper;
 import com.bambi.mapper.ItemMapper;
 import com.bambi.service.IItemService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
@@ -14,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Array;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -38,6 +43,9 @@ public class ItemServiceImpl implements IItemService {
 
     @Autowired
     private ItemMapper mapper;
+    @Autowired
+    private ItemDescMapper itemDescMapper;
+
 
     /**
      * 返回给前端前端想查看的数据
@@ -56,11 +64,52 @@ public class ItemServiceImpl implements IItemService {
     @Transactional
     @ApiOperation("新增商品")
     @Override
-    public void saveItem(ItemDao itemDao) {
+    public void saveItem(ItemDao itemDao, ItemDesc itemDesc) {
         itemDao.setStatus(1);
         itemDao.setCreated(LocalDateTime.now());
         itemDao.setUpdated(itemDao.getCreated());
         mapper.insert(itemDao);
+
+        itemDesc.setItemId(itemDao.getId());
+        itemDesc.setUpdated(itemDao.getCreated());
+        itemDesc.setCreated(itemDao.getCreated());
+        itemDescMapper.insert(itemDesc);
+
+    }
+
+    @Override
+    public ItemDesc findItemDescById(Long itemId) {
+        return itemDescMapper.selectById(itemId);
+    }
+
+    @Override
+    public void updateItem(ItemDao itemDao, ItemDesc itemDesc) {
+        itemDao.setUpdated(LocalDateTime.now());
+        mapper.updateById(itemDao);
+        itemDesc.setItemId(itemDao.getId());
+        itemDesc.setUpdated(itemDao.getUpdated());
+        itemDescMapper.updateById(itemDesc);
+    }
+
+    @Override
+    public void deleteItems(Long[] ids) {
+        //需要转换成数组
+        logger.info("开始批量删除");
+        List<Long> longs = Arrays.asList(ids);
+        mapper.deleteBatchIds(longs);
+        itemDescMapper.deleteBatchIds(longs);
+    }
+
+    @Override
+    public void updateStatus(Long[] ids, int status) {
+        ItemDao itemDao = new ItemDao();
+        itemDao.setStatus(status);
+        itemDao.setUpdated(LocalDateTime.now());
+        UpdateWrapper<ItemDao> updateWrapper = new UpdateWrapper<>();
+        List<Long> longs = Arrays.asList(ids);
+        updateWrapper.in("id",longs);
+        mapper.update(itemDao,updateWrapper);
+
     }
 
     private EasyUITable findByMybatisPlusPage(Integer page, Integer rows) {
@@ -92,4 +141,6 @@ public class ItemServiceImpl implements IItemService {
         List<ItemDao> itemByPage = mapper.findItemByPage(start, rows);
         return new EasyUITable(selectCount, itemByPage);
     }
+
+
 }

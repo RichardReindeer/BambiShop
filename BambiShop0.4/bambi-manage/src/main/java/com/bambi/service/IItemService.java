@@ -1,6 +1,7 @@
 package com.bambi.service;
 
 import com.bambi.domain.dao.ItemDao;
+import com.bambi.domain.dao.ItemDesc;
 import com.bambi.domain.param.EasyUITable;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +24,13 @@ public interface IItemService {
 
     EasyUITable findUserByPage(Integer page, Integer rows);
 
-    void saveItem(ItemDao itemDao);
+    void saveItem(ItemDao itemDao, ItemDesc itemDesc);
+
+    ItemDesc findItemDescById(Long itemId);
+
+    void updateItem(ItemDao itemDao, ItemDesc itemDesc);
+
+    void deleteItems(Long[] ids);
+
+    void updateStatus(Long[] ids, int status);
 }
