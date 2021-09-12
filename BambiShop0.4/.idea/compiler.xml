@@ -9,11 +9,16 @@
         <outputRelativeToContentRoot value="true" />
         <module name="bambi-common" />
         <module name="bambi-manage" />
+        <module name="BambiShop0.4" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="BambiShop0.4" target="11" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="BambiShop0.4" options="-parameters" />
       <module name="bambi-common" options="-parameters" />
       <module name="bambi-manage" options="-parameters" />
     </option>

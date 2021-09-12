@@ -11,10 +11,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 描述：商品类控制层
@@ -39,7 +36,7 @@ public class ItemController {
     private ItemServiceImpl itemService;
 
     @ApiOperation("根据传递过来的参数进行分页操作")
-    @GetMapping("/query")
+    @PostMapping("/query")
     public EasyUITable findItemByPage(Integer page, Integer rows) {
 
         try{
@@ -56,7 +53,7 @@ public class ItemController {
     }
 
     @ApiOperation("商品新增")
-    @GetMapping("/save")
+    @PostMapping("/save")
     public SystemResult saveItem(ItemDao itemDao, ItemDesc itemDesc){
         if(itemDao==null||itemDesc==null){
             logger.error("新增物品为空");
@@ -75,7 +72,7 @@ public class ItemController {
     }
 
     @ApiOperation("查询商品详情信息")
-    @GetMapping("/query/item/desc/{itemId}")
+    @PostMapping("/query/item/desc/{itemId}")
     public SystemResult findItemDescById(@PathVariable Long itemId){
         logger.info("selectItemDescById STARTING ");
         try{
