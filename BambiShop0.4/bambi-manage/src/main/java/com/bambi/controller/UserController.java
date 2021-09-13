@@ -34,7 +34,7 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
-    @GetMapping("/findAll")
+    @RequestMapping("/findAll")
     public String findAll(Model model){
         List<UserDao> all = userService.findAll();
         model.addAttribute("userList",all);

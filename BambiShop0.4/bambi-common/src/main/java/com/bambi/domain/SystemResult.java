@@ -20,6 +20,31 @@ public class SystemResult {
     private String msg;
     private Object data;
 
+    /**
+     * 重载方法，简化用户的调用
+     */
+    public static SystemResult fail(){
+        return new SystemResult(201,"服务器异常",null);
+    }
+
+    public static SystemResult success(){
+        return new SystemResult(200,"业务调用成功",null);
+    }
+    public static SystemResult success(Object o){
+        return new SystemResult(200,"业务调用成功",o);
+    }
+
+    /**
+     * 如果只返回字符串，因为object包含字符串，所以会产生歧义
+     * @param obj
+     * @param msg 如果想要传入消息信息，需要再传入一个标记对象obj
+     * @return
+     */
+    public static SystemResult success(Object obj , String msg){
+        return new SystemResult(200,msg,obj);
+    }
+
+
     public SystemResult() {
     }
 
@@ -53,23 +78,4 @@ public class SystemResult {
         this.data = data;
     }
 
-    public static SystemResult fail() {
-        return new SystemResult(201, "服务器调用失败", null);
-    }
-
-    public static SystemResult fail(String msg) {
-        return new SystemResult(201, msg, null);
-    }
-
-    public static SystemResult success() {
-        return new SystemResult(200, "服务器调用成功", null);
-    }
-
-    public static SystemResult success(Object data) {
-        return new SystemResult(200, "服务器调用成功", data);
-    }
-
-    public static SystemResult success(String msg, Object data) {
-        return new SystemResult(200, msg, data);
-    }
 }
