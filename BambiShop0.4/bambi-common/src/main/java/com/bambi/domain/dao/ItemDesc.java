@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
 /**
  * 描述： 为了加快商品查询速度，准备两张表 tb_item 和tb_item_desc
  *  此为itemDesc的实体类
+ *  添加商品详情信息
  * <pre>
  * HISTORY
  * ****************************************************************************

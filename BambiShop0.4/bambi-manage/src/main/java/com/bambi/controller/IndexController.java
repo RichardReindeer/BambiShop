@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 /**
  * 描述：
@@ -18,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
  *  1      2021/9/2 0:52    Bambi        Create
  * ****************************************************************************
  * </pre>
- *
  * @author Bambi
  * @since 1.0
  */
