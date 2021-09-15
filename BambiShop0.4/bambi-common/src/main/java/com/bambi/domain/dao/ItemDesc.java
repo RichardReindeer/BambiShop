@@ -2,6 +2,7 @@ package com.bambi.domain.dao;
 
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * 描述： 为了加快商品查询速度，准备两张表 tb_item 和tb_item_desc
@@ -19,6 +20,7 @@ import com.baomidou.mybatisplus.annotation.TableName;
  * @since 1.0
  */
 @TableName("tb_item_desc")
+@JsonIgnoreProperties(ignoreUnknown=true) //JSON转化时忽略未知属性
 public class ItemDesc extends BaseDao{
     //tb_item中的id与desc中的id一致
     @TableId

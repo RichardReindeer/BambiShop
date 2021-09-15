@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
  * @author Bambi
  * @since 1.0
  */
-@Service
 public interface IItemService {
 
     EasyUITable findUserByPage(Integer page, Integer rows);

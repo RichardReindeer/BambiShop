@@ -8,6 +8,7 @@ import com.bambi.mapper.ItemMapper;
 import com.bambi.service.IItemService;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
@@ -57,8 +58,8 @@ public class ItemServiceImpl implements IItemService {
     @ApiOperation("根据页数和行数进行手动分页")
     @Override
     public EasyUITable findUserByPage(Integer page, Integer rows) {
-        //return findByPage(page, rows);
-        return findByMybatisPlusPage(page, rows);
+        return findByPage(page, rows);
+        //return findByMybatisPlusPage(page, rows);
     }
 
     @Transactional
@@ -107,30 +108,31 @@ public class ItemServiceImpl implements IItemService {
         itemDao.setUpdated(LocalDateTime.now());
         UpdateWrapper<ItemDao> updateWrapper = new UpdateWrapper<>();
         List<Long> longs = Arrays.asList(ids);
-        updateWrapper.in("id",longs);
-        mapper.update(itemDao,updateWrapper);
+        updateWrapper.in("id", longs);
+        mapper.update(itemDao, updateWrapper);
 
     }
 
+    /**
+     * 使用MybatisPlus进行分页操作
+     * 声明Page对象，并赋予泛型
+     * 设置每页展示的行数，默认是10
+     * 设置当前页，默认是1
+     * @param page 起始页页数
+     * @param rows 展示数据的行数
+     * @return
+     */
     private EasyUITable findByMybatisPlusPage(Integer page, Integer rows) {
         logger.info("使用mybatisPlus分页操作");
-
-        try {
-            //创建分页，传入参数为分页的条数和页数
-            Page<ItemDao> itemDaoPage = new Page<>(page, rows);
-            QueryWrapper<ItemDao> queryWrapper = new QueryWrapper<>();
-            queryWrapper.orderByDesc("updated");
-            Page<ItemDao> itemDaoIPage = mapper.selectPage(itemDaoPage, queryWrapper);
-            int total = (int) itemDaoIPage.getTotal();
-            List<ItemDao> records = itemDaoIPage.getRecords();
-            return new EasyUITable(total, records);
-        } catch (Exception e) {
-            logger.error("has some error in mybatisPlusPage()");
-            return null;
-        } finally {
-            logger.info("mybatisPlus分页操作执行完毕");
-        }
-
+        IPage<ItemDao> itemDaoIPage = new Page<>();
+        itemDaoIPage.setSize(rows);
+        itemDaoIPage.setCurrent(page); //设置当前页，当前页为传递过来的页数
+        QueryWrapper<ItemDao> queryWrapper = new QueryWrapper<ItemDao>();
+        queryWrapper.orderByDesc("updated");
+        IPage<ItemDao> itemIPage = mapper.selectPage(itemDaoIPage, queryWrapper);
+        int total = (int) itemIPage.getTotal();
+        List<ItemDao> records = itemIPage.getRecords();
+        return new EasyUITable(total, records);
     }
 
     @Deprecated

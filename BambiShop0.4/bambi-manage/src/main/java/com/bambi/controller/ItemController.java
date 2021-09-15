@@ -5,6 +5,7 @@ import com.bambi.domain.dao.ItemDao;
 import com.bambi.domain.dao.ItemDesc;
 import com.bambi.domain.exception.NoParamFromWebException;
 import com.bambi.domain.param.EasyUITable;
+import com.bambi.service.IItemService;
 import com.bambi.service.impl.ItemServiceImpl;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiOperation;
@@ -33,74 +34,58 @@ import org.springframework.web.bind.annotation.*;
 public class ItemController {
     private static Logger logger = LoggerFactory.getLogger(ItemController.class);
     @Autowired
-    private ItemServiceImpl itemService;
+    private IItemService itemService;
 
     @ApiOperation("根据传递过来的参数进行分页操作")
     @RequestMapping("/query")
     public EasyUITable findItemByPage(Integer page, Integer rows) {
-
-        try{
-            if (page == null || rows == null) {
-                logger.error("请求没有传递过来参数");
-                throw new NoParamFromWebException("没有传递过来参数");
-            }
-            logger.info("go to sql ");
-            return itemService.findUserByPage(page, rows);
-        }catch (NoParamFromWebException e){
-            logger.error("no param");
-            return null;
-        }
+        logger.info("go to sql ");
+        return itemService.findUserByPage(page, rows);
     }
 
     /**
      * 为了保证接口的健壮性，要对异常进行预先处理
+     *
      * @param itemDao
      * @param itemDesc
      * @return
      */
     @ApiOperation("商品新增")
     @RequestMapping("/save")
-    public SystemResult saveItem(ItemDao itemDao, ItemDesc itemDesc){
-        /*if(itemDao==null||itemDesc==null){
+    public SystemResult saveItem(ItemDao itemDao, ItemDesc itemDesc) {
+        if (itemDao == null || itemDesc == null) {
             logger.error("新增物品为空");
             return SystemResult.fail();
-        }*/
+        }
         logger.info("save Item is starting !!!");
-        try{
-            itemService.saveItem(itemDao,itemDesc);
-            return SystemResult.success();
-        }
-        catch (Exception e){
-            logger.error("have some error in save Item = =");
-            return SystemResult.fail();
-        }
+        itemService.saveItem(itemDao, itemDesc);
+        return SystemResult.success();
 
     }
 
     @ApiOperation("查询商品详情信息")
     @RequestMapping("/query/item/desc/{itemId}")
-    public SystemResult findItemDescById(@PathVariable Long itemId){
+    public SystemResult findItemDescById(@PathVariable Long itemId) {
         logger.info("selectItemDescById STARTING ");
-        try{
+        try {
             ItemDesc itemDesc = itemService.findItemDescById(itemId);
             return SystemResult.success(itemDesc);
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             logger.error("has some error in findItemDescById");
-            return  SystemResult.fail();
+            return SystemResult.fail();
         }
     }
 
     @ApiOperation("对商品进行修改操作")
     @RequestMapping("/update")
-    public SystemResult updateItem(ItemDesc itemDesc,ItemDao itemDao){
-        itemService.updateItem(itemDao,itemDesc);
+    public SystemResult updateItem(ItemDesc itemDesc, ItemDao itemDao) {
+        itemService.updateItem(itemDao, itemDesc);
         return SystemResult.success();
     }
 
     @ApiOperation("商品删除")
     @RequestMapping("/delete")
-    public SystemResult deleteItems(Long[] ids){
+    public SystemResult deleteItems(Long[] ids) {
         logger.info("接收到请求，开始执行删除操作");
         itemService.deleteItems(ids);
         return SystemResult.success();
@@ -108,17 +93,17 @@ public class ItemController {
 
     @ApiOperation("商品下架")
     @RequestMapping("/instock")
-    public SystemResult instockItems(Long[] ids){
+    public SystemResult instockItems(Long[] ids) {
         int status = 2;
-        itemService.updateStatus(ids,status);
+        itemService.updateStatus(ids, status);
         return SystemResult.success();
     }
 
     @ApiOperation("商品上架")
     @RequestMapping("/reshelf")
-    public SystemResult reshIfItems(Long[] ids){
+    public SystemResult reshIfItems(Long[] ids) {
         int status = 1;
-        itemService.updateStatus(ids,status);
+        itemService.updateStatus(ids, status);
         return SystemResult.success();
     }
 

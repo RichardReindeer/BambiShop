@@ -46,6 +46,7 @@ public class ItemCatController {
             logger.error("没有接收到对应的ItemCatId");
             return "redirect:/item/cat/queryAll";
         }
+        logger.info("这是你要的id:{}",itemCatId);
         return itemCatService.queryCatById(itemCatId);
     }
 
@@ -64,9 +65,18 @@ public class ItemCatController {
      * @return
      */
     @ApiOperation("提供easyUI进行列表展示所需的分类")
+    //item/cat/list?id=290
     @RequestMapping("/list")
-    public List<EasyUITree> findItemCatByParentId(@RequestParam(defaultValue = "0",name = "id") Long parentId){
-        logger.info("findCatByParentId starting");
+    public List<EasyUITree> findItemCatListByParentId
+    (@RequestParam(value="id",defaultValue="0") Long parentId){
+		/*Long id = request.getParameter("id");
+
+		Long parentId = id==null?"默认值":id;*/
+
+        //1.定义parentId  默认条件下查询一级目录信息
+        //查询后台的数据库,获取商品分类信息
         return itemCatService.findItemCatByParentId(parentId);
+        //利用下列方法实现数据的缓存查询.
+        //return itemCatService.findItemCatCache(parentId);
     }
 }
