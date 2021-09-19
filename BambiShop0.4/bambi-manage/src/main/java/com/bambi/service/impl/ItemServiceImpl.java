@@ -58,8 +58,8 @@ public class ItemServiceImpl implements IItemService {
     @ApiOperation("根据页数和行数进行手动分页")
     @Override
     public EasyUITable findUserByPage(Integer page, Integer rows) {
-        return findByPage(page, rows);
-        //return findByMybatisPlusPage(page, rows);
+        //return findByPage(page, rows);
+        return findByMybatisPlusPage(page, rows);
     }
 
     @Transactional

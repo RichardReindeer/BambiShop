@@ -24,6 +24,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @MapperScan("com.bambi.mapper")
 public class ManagerRunner {
     public static void main(String[] args) {
-        SpringApplication.run(ManagerRunner.class);
+        SpringApplication.run(ManagerRunner.class,args);
     }
 }
